@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:savr_sense/core/di/service_locator.dart';
 import 'package:savr_sense/features/home/presentation/home_screen.dart';
 
 void main() {
-  // setupDependencies();
+  setupLocator();
   runApp(const MyApp());
 }
 

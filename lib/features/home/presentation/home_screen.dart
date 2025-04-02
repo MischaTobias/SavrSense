@@ -6,9 +6,9 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   final List<String> cardTitles = const [
-    'Raw Ingredient',
-    'Processed Good',
-    'Dish',
+    'Raw Ingredients',
+    'Processed Goods',
+    'Dishes',
   ];
 
   @override

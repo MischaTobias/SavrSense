@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:savr_sense/features/dishes/presentation/add_dish_screen.dart';
 import 'package:savr_sense/features/processed_goods/presentation/add_processed_good_screen.dart';
-import 'package:savr_sense/features/raw_ingredients/presentation/add_raw_ingredient_screen.dart';
+import 'package:savr_sense/features/raw_ingredients/presentation/raw_ingredent_inventory_screen.dart';
 
 class ScreenInfo {
   final Widget screen;
@@ -12,15 +12,15 @@ class ScreenInfo {
 
 class ScreenRegistry {
   static Map<String, ScreenInfo> screens = {
-    'Raw Ingredient': ScreenInfo(
-      screen: AddRawIngredientScreen(),
+    'Raw Ingredients': ScreenInfo(
+      screen: RawIngredientInventoryScreen(),
       imagePath: 'assets/images/raw_ingredients.svg',
     ),
-    'Processed Good': ScreenInfo(
+    'Processed Goods': ScreenInfo(
       screen: AddProcessedGoodScreen(),
       imagePath: 'assets/images/processed_goods.svg',
     ),
-    'Dish': ScreenInfo(
+    'Dishes': ScreenInfo(
       screen: AddDishScreen(),
       imagePath: 'assets/images/dishes.svg',
     ),

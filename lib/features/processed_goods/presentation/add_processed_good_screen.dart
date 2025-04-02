@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
+import 'package:savr_sense/core/di/service_locator.dart';
 
 class AddProcessedGoodScreen extends StatefulWidget {
   const AddProcessedGoodScreen({super.key});
@@ -16,7 +17,8 @@ class AddProcessedGoodScreenState extends State<AddProcessedGoodScreen> {
     String name = _nameController.text;
     String brand = _brandController.text;
     if (name.isNotEmpty && brand.isNotEmpty) {
-      print("Saved Processed Good: $name (Brand: $brand)");
+      final Logger logger = locator<Logger>();
+      logger.i("Saved Processed Good: $name (Brand: $brand)");
       _nameController.clear();
       _brandController.clear();
     }
