@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:savr_sense/core/di/service_locator.dart';
 import 'package:savr_sense/features/home/presentation/home_screen.dart';
+import 'package:savr_sense/services/firebase_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseService.initializeFirebase();
   setupLocator();
   runApp(const MyApp());
 }

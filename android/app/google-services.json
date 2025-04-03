@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "639197274226",
+    "project_id": "savr-sense",
+    "storage_bucket": "savr-sense.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639197274226:android:c95fa7d6b6253650efe2eb",
+        "android_client_info": {
+          "package_name": "com.example.savr_sense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEghBmJquIHuTa0hKXjOKSa_6aFvZQZpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

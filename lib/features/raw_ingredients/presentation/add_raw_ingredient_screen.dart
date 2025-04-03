@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:logger/logger.dart';
-import 'package:savr_sense/core/di/service_locator.dart';
+import 'package:savr_sense/features/raw_ingredients/models/raw_ingredient.dart';
 
 class AddRawIngredientScreen extends StatefulWidget {
   const AddRawIngredientScreen({super.key});
@@ -28,21 +27,21 @@ class AddRawIngredientScreenState extends State<AddRawIngredientScreen> {
     "cups",
   ];
 
-  // Final regex for a valid whole or decimal number (no negatives)
   final RegExp _numericRegex = RegExp(r'^(?:\d+|\d*\.\d+)$');
 
   void _saveIngredient() {
-    // Validate the form before saving
     if (_formKey.currentState!.validate()) {
       String name = _nameController.text;
       String quantity = _quantityController.text;
-      final Logger logger = locator<Logger>();
-      logger.i("Saved Ingredient: $name ($quantity $_selectedUnit)");
-      _nameController.clear();
-      _quantityController.clear();
-      setState(() {
-        _selectedUnit = "grams"; // Reset to default unit
-      });
+
+      RawIngredient newIngredient = RawIngredient(
+        uid: DateTime.now().millisecondsSinceEpoch.toString(),
+        name: name,
+        image: 'assets/images/default.png',
+        quantity: quantity,
+      );
+
+      Navigator.pop(context, newIngredient);
     }
   }
 
@@ -69,17 +68,18 @@ class AddRawIngredientScreenState extends State<AddRawIngredientScreen> {
               TextFormField(
                 controller: _quantityController,
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
-                // Use a simple formatter that allows digits and a decimal point,
-                // allowing for temporary states during editing.
+
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
                 ],
-                decoration: const InputDecoration(labelText: 'Enter quantity'),
+                decoration: const InputDecoration(
+                  labelText: 'Enter initial quantity',
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Quantity is required';
+                    return 'Initial quantity is required';
                   }
-                  // Validate final value using the stricter regex.
+
                   if (!_numericRegex.hasMatch(value)) {
                     return 'Please enter a valid number (whole or decimal, no negatives)';
                   }
